@@ -49,7 +49,6 @@ def member():
     else:
         return render_template("main.html")
 
-
 # 失敗頁面
 @app.route("/error")
 def error():
