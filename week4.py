@@ -28,11 +28,11 @@ def signin():
     if account=="test":
         if secret=="test":
             session["account"]=request.form["account"]
+            return redirect("/member")
         elif secret=="":
             return redirect(url_for("error",message="請輸入帳號,密碼"))
         else:
             return redirect(url_for("error",message="帳號或密碼輸入錯誤"))
-        return redirect("/member")
     elif account=="":
         return redirect(url_for("error",message="請輸入帳號,密碼"))
     elif secret=="":
@@ -46,7 +46,7 @@ def member():
     if "account" in session:
         return render_template("member.html")
     else:
-        return render_template("main.html")
+        return redirect("/")
 
 # 失敗頁面
 @app.route("/error")
@@ -59,7 +59,7 @@ def error():
 @app.route("/signout")
 def signout():
     session.pop("account", None)
-    return render_template("main.html")
+    return redirect("/")
 
 # 計算正整數平方
 @app.route("/square")
