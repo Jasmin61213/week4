@@ -1,4 +1,3 @@
-from email import message
 from flask import Flask 
 from flask import request 
 from flask import redirect 
@@ -11,6 +10,7 @@ app=Flask(
     static_folder="public",
     static_url_path="/" 
 )
+
 app.secret_key="any string but secret"
 
 # 首頁
@@ -34,7 +34,6 @@ def signin():
             return redirect(url_for("error",message="帳號或密碼輸入錯誤"))
         return redirect("/member")
     elif account=="":
-        render_template("error.html",data="請輸入帳號,密碼")
         return redirect(url_for("error",message="請輸入帳號,密碼"))
     elif secret=="":
         return redirect(url_for("error",message="請輸入帳號,密碼"))      
