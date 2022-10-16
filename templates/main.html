@@ -18,10 +18,19 @@
         <hr>
         <div class="text">計算正整數的平方</div>
         <div  class="form">
-            <form action="/square">
-                <div class="input">正整數 <input type="text" name="num"></div>
-                <div class="button"><button>計算</button></div>
+            <form action="result">
+                <div class="input">正整數 <input type="text" name="num" id="num"></div>
+                <div class="button">
+                    <input type=button onclick="jump()" value=計算 />
+                </div>
             </form>
         </div>     
     </body>
+    <script>
+        function jump(){
+            let num=document.getElementById("num").value
+            let link="/square/"+num
+            window.location.href=link;
+        };
+    </script>
 </html>
