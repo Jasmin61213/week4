@@ -4,6 +4,7 @@ from flask import redirect
 from flask import render_template 
 from flask import session
 from flask import url_for
+import json
 
 app=Flask(
     __name__,
@@ -62,12 +63,10 @@ def signout():
     return redirect("/")
 
 # 計算正整數平方
-@app.route("/square")
-def square():
-    number=request.args.get("num","")
-    number=int(number)
-    result=number*number
-    return render_template("result.html",data=result)
+@app.route("/square/<int:num>")
+def square(num):
+    result=f"{str(num*num)}"
+    return render_template("result.html",data=result)   
 
 # 埠號
 app.run(port=3000)
